@@ -1,0 +1,49 @@
+### IntelliJ IDEA ###
+out/
+
+.idea/
+*.iml
+*.iws
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+# Build
+target/
+build/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Sensitive files
+*.env
+*.keystore
