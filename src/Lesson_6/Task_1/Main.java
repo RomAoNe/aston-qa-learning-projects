@@ -14,7 +14,7 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) {
         int minPassingGrade = 3;
-        int course = 3;
+        int course = -3;
         List<Student> students = generateStudents();
 
         for (Student student : students) {
@@ -27,6 +27,11 @@ public class Main {
     }
 
     public static void printStudents(Set<Student> students, int course) {
+        if (course < 1 || course > 5) {
+            System.out.println("Wrong course's number: " + course);
+            return;
+        }
+
         boolean isFound = false;
 
         System.out.println("Students of " + course + " course:");
