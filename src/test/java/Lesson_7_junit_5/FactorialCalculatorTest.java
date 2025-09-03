@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class FactorialCalculatorTest {
     @Test
     @DisplayName("Факториал 0 равен 1")
-    void testFactorialOfZero() {
+    public void testFactorialOfZeroTest() {
         FactorialCalculator factorialCalculator = new FactorialCalculator(0);
         int result = factorialCalculator.calculateFactorial();
         int expected = 1;
@@ -18,7 +18,7 @@ public class FactorialCalculatorTest {
 
     @Test
     @DisplayName("Факториал 5 равен 120")
-    void testFactorialOfFive() {
+    public void testFactorialOfFiveTest() {
         FactorialCalculator factorialCalculator = new FactorialCalculator(5);
         int result = factorialCalculator.calculateFactorial();
         int expected = 120;
@@ -27,7 +27,7 @@ public class FactorialCalculatorTest {
 
     @Test
     @DisplayName("Фактриала отрицательного числа не существует")
-    void testFactorialOfNegative() {
+    public void testFactorialOfNegativeTest() {
         assertThrows(IllegalArgumentException.class, () -> new FactorialCalculator(-5));
     }
 }
