@@ -1,4 +1,4 @@
-package Lesson_7_junit_5;
+package Lesson_7_testing;
 
 public class NumberComparator {
     private final int firstNumber;
