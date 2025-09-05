@@ -35,7 +35,7 @@ public class RequestMethodsTest {
     @DisplayName("POST с raw text")
     public void postRequestWithRawText() {
         String requestText = "{\n" +
-                "    \"test\": \"Hello world!\"\n" +
+                "    \"test\": \"value\"\n" +
                 "}";
 
         given()
