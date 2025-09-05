@@ -1,4 +1,4 @@
-package Lesson_7_testing;
+package Lesson_7_testng;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
