@@ -16,6 +16,7 @@
         <junit.jupiter.version>5.10.2</junit.jupiter.version>
         <testng.version>7.9.0</testng.version>
         <restassured.version>5.5.1</restassured.version>
+        <selenium.version>4.34.0</selenium.version>
     </properties>
 
     <dependencies>
@@ -39,8 +40,15 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>5.5.1</version>
+            <version>5.5.6</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.34.0</version>
         </dependency>
     </dependencies>
 </project>
