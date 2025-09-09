@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -57,7 +56,6 @@ public class MtsTests {
         link.click();
 
         String currentUrl = webDriver.getCurrentUrl();
-        assertNotNull(currentUrl);
         assertTrue(currentUrl.contains("poryadok-oplaty-i-bezopasnost-internet-platezhey"));
     }
 
@@ -75,10 +73,13 @@ public class MtsTests {
 
         phoneNumber.click();
         phoneNumber.sendKeys("297777777");
+
         sum.click();
         sum.sendKeys("50");
+
         email.click();
         email.sendKeys("guvpeo@tempinbox.xyz");
+
         submitButton.click();
 
         WebElement paymentInfo = wait.until(ExpectedConditions.visibilityOfElementLocated(
