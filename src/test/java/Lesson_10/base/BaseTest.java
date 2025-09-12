@@ -8,17 +8,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BaseTest {
-    protected WebDriver webDriver;
+public abstract class BaseTest {
+    protected WebDriver webDriver = new ChromeDriver();
     protected WebDriverWait wait;
-
-    public BaseTest() {
-        webDriver = new ChromeDriver();
-        wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
-    }
 
     @BeforeEach
     void setUp() {
+        wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
         webDriver.get("http://mts.by/");
 
         try {

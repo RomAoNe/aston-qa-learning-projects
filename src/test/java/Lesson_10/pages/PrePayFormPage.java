@@ -1,62 +1,56 @@
 package Lesson_10.pages;
 
+import Lesson_10.base.BasePage;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Map;
 
-public class PrePayFormPage {
-    By blockTitleLocator = By.xpath("//h2[normalize-space()=\"Онлайн пополнение без комиссии\"]");
-    By visaLogoLocator = By.xpath("//div[@class=\"pay__partners\"]//img[@alt=\"Visa\"]");
-    By verifiedByVisaLogoLocator = By.xpath("//div[@class=\"pay__partners\"]//img[@alt=\"Verified By Visa\"]");
-    By masterCardLogoLocator = By.xpath("//div[@class=\"pay__partners\"]//img[@alt=\"MasterCard\"]");
-    By masterCardSecureCodeLogoLocator = By.xpath("//div[@class=\"pay__partners\"]//img[@alt=\"MasterCard Secure Code\"]");
-    By belkartLogoLocator = By.xpath("//div[@class=\"pay__partners\"]//img[@alt=\"Белкарт\"]");
-    By aboutServiceLinkLocator = By.xpath("//div[@class=\"pay__wrapper\"]//a[contains(text(), \"Подробнее о сервисе\")]");
+public class PrePayFormPage extends BasePage {
+    private final By blockTitleLocator = By.xpath("//h2[normalize-space()=\"Онлайн пополнение без комиссии\"]");
+    private final By visaLogoLocator = By.xpath("//div[@class=\"pay__partners\"]//img[@alt=\"Visa\"]");
+    private final By verifiedByVisaLogoLocator = By.xpath("//div[@class=\"pay__partners\"]//img[@alt=\"Verified By Visa\"]");
+    private final By masterCardLogoLocator = By.xpath("//div[@class=\"pay__partners\"]//img[@alt=\"MasterCard\"]");
+    private final By masterCardSecureCodeLogoLocator = By.xpath("//div[@class=\"pay__partners\"]//img[@alt=\"MasterCard Secure Code\"]");
+    private final By belkartLogoLocator = By.xpath("//div[@class=\"pay__partners\"]//img[@alt=\"Белкарт\"]");
+    private final By aboutServiceLinkLocator = By.xpath("//div[@class=\"pay__wrapper\"]//a[contains(text(), \"Подробнее о сервисе\")]");
 
-    By serviceSelectorLocator = By.xpath("//div[@class=\"pay__form\"]//div[@class=\"select__wrapper\"]");
+    private final By serviceSelectorLocator = By.xpath("//div[@class=\"pay__form\"]//div[@class=\"select__wrapper\"]");
 
     // Услуги связи
-    By connectionServiceInSelectorLocator = By.xpath("//p[contains(text(), \"Услуги связи\")]");
-    By connectionServiceFormLocator = By.xpath("//form[@id=\"pay-connection\"]");
-    By connectionServicePhoneNumberLocator = By.xpath(".//input[@id=\"connection-phone\"]");
-    By connectionServiceSumLocator = By.xpath(".//input[@id=\"connection-sum\"]");
-    By connectionServiceEmailLocator = By.xpath(".//input[@id=\"connection-email\"]");
+    private final By connectionServiceInSelectorLocator = By.xpath("//p[contains(text(), \"Услуги связи\")]");
+    private final By connectionServiceFormLocator = By.xpath("//form[@id=\"pay-connection\"]");
+    private final By connectionServicePhoneNumberLocator = By.xpath(".//input[@id=\"connection-phone\"]");
+    private final By connectionServiceSumLocator = By.xpath(".//input[@id=\"connection-sum\"]");
+    private final By connectionServiceEmailLocator = By.xpath(".//input[@id=\"connection-email\"]");
 
     // Домашний интернет
-    By internetServiceInSelectorLocator = By.xpath("//p[contains(text(), \"Домашний интернет\")]");
-    By internetServiceFormLocator = By.xpath("//form[@id=\"pay-internet\"]");
-    By internetServiceNumberLocator = By.xpath(".//input[@id=\"internet-phone\"]");
-    By internetServiceSumLocator = By.xpath(".//input[@id=\"internet-sum\"]");
-    By internetServiceEmailLocator = By.xpath(".//input[@id=\"internet-email\"]");
+    private final By internetServiceInSelectorLocator = By.xpath("//p[contains(text(), \"Домашний интернет\")]");
+    private final By internetServiceFormLocator = By.xpath("//form[@id=\"pay-internet\"]");
+    private final By internetServiceNumberLocator = By.xpath(".//input[@id=\"internet-phone\"]");
+    private final By internetServiceSumLocator = By.xpath(".//input[@id=\"internet-sum\"]");
+    private final By internetServiceEmailLocator = By.xpath(".//input[@id=\"internet-email\"]");
 
     // Рассрочка
-    By instalmentServiceInSelectorLocator = By.xpath("//p[contains(text(), \"Рассрочка\")]");
-    By instalmentServiceFormLocator = By.xpath("//form[@id=\"pay-instalment\"]");
-    By instalmentServiceNumberLocator = By.xpath(".//input[@id=\"score-instalment\"]");
-    By instalmentServiceSumLocator = By.xpath(".//input[@id=\"instalment-sum\"]");
-    By instalmentServiceEmailLocator = By.xpath(".//input[@id=\"instalment-email\"]");
+    private final By instalmentServiceInSelectorLocator = By.xpath("//p[contains(text(), \"Рассрочка\")]");
+    private final By instalmentServiceFormLocator = By.xpath("//form[@id=\"pay-instalment\"]");
+    private final By instalmentServiceNumberLocator = By.xpath(".//input[@id=\"score-instalment\"]");
+    private final By instalmentServiceSumLocator = By.xpath(".//input[@id=\"instalment-sum\"]");
+    private final By instalmentServiceEmailLocator = By.xpath(".//input[@id=\"instalment-email\"]");
 
     // Задолженность
-    By arrearsServiceInSelectorLocator = By.xpath("//p[contains(text(), \"Задолженность\")]");
-    By arrearsServiceFormLocator = By.xpath("//form[@id=\"pay-arrears\"]");
-    By arrearsServiceNumberLocator = By.xpath(".//input[@id=\"score-arrears\"]");
-    By arrearsServiceSumLocator = By.xpath(".//input[@id=\"arrears-sum\"]");
-    By arrearsServiceEmailLocator = By.xpath(".//input[@id=\"arrears-email\"]");
+    private final By arrearsServiceInSelectorLocator = By.xpath("//p[contains(text(), \"Задолженность\")]");
+    private final By arrearsServiceFormLocator = By.xpath("//form[@id=\"pay-arrears\"]");
+    private final By arrearsServiceNumberLocator = By.xpath(".//input[@id=\"score-arrears\"]");
+    private final By arrearsServiceSumLocator = By.xpath(".//input[@id=\"arrears-sum\"]");
+    private final By arrearsServiceEmailLocator = By.xpath(".//input[@id=\"arrears-email\"]");
 
-    By submitButtonLocator = By.xpath(".//button[text()=\"Продолжить\"]");
-    By paymentIFrameLocator = By.xpath("//iframe[@class=\"bepaid-iframe\"]");
-
-    private WebDriver webDriver;
-    private WebDriverWait wait;
-    private Actions actions;
+    private final By submitButtonLocator = By.xpath(".//button[text()=\"Продолжить\"]");
+    private final By paymentIFrameLocator = By.xpath("//iframe[@class=\"bepaid-iframe\"]");
 
     public PrePayFormPage(WebDriver webDriver, WebDriverWait wait) {
-        this.webDriver = webDriver;
-        this.wait = wait;
-        this.actions = new Actions(webDriver);
+        super(webDriver,wait);
     }
 
     public By getConnectionServiceFormLocator() {
@@ -73,6 +67,10 @@ public class PrePayFormPage {
 
     public By getArrearsServiceFormLocator() {
         return arrearsServiceFormLocator;
+    }
+
+    public By getPaymentIFrameLocator() {
+        return paymentIFrameLocator;
     }
 
     public String getBlockTitle() {

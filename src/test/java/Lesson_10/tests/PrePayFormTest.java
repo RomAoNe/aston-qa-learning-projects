@@ -2,6 +2,7 @@ package Lesson_10.tests;
 
 import Lesson_10.base.BaseTest;
 import Lesson_10.pages.PrePayFormPage;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -11,7 +12,12 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PrePayFormTest extends BaseTest {
-    PrePayFormPage prePayFormPage = new PrePayFormPage(webDriver, wait);
+    PrePayFormPage prePayFormPage;
+
+    @BeforeEach
+    void initPage() {
+        prePayFormPage = new PrePayFormPage(webDriver, wait);
+    }
 
     @Test
     @DisplayName("\"Блок называется \"Онлайн пополнение без комиссии\"\"")
@@ -39,7 +45,7 @@ public class PrePayFormTest extends BaseTest {
     @Test
     @DisplayName("При заполненных полях формы \"Услуги связи\", кнопка \"Продолжить\" открывает модальное окно для ввода реквизитов")
     void testSubmitButtonWhenFormIsFilled() {
-        prePayFormPage.fillConnectionServicePaymentForm("297777777", "50", "guvpeo@tempinbox.xyz");
+        prePayFormPage.fillConnectionServicePaymentForm("297777777", "50.00", "guvpeo@tempinbox.xyz");
         prePayFormPage.clickSubmitButton(prePayFormPage.getConnectionServiceFormLocator());
         assertTrue(prePayFormPage.isIFrameDisplayed());
     }
