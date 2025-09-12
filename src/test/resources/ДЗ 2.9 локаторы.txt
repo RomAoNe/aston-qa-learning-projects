@@ -1,0 +1,108 @@
+
+***  Дз к Лекции 2.9  ***
+
+1. Локатор блока //h2[normalize-space()="Онлайн пополнение без комиссии"]
+	(textToBePresentInElement(by locator, string text))
+2. Локаторы логотипов платежных систем
+	(presenceOfElementLocated(By locator)):
+   2.1 Visa: //div[@class="pay__partners"]//img[@alt="Visa"]
+   2.2 Verified by Visa: //div[@class="pay__partners"]//img[@alt="Verified By Visa"]
+   2.3 Master Card: //div[@class="pay__partners"]//img[@alt="MasterCard"]
+   2.4 Master Card SecureCode: //div[@class="pay__partners"]//img[@alt="MasterCard Secure Code"]
+   2.5 Белкарт: //div[@class="pay__partners"]//img[@alt="Белкарт"]
+   
+3. Ссылка "Подробнее о сервисе" 
+//div[@class="pay__wrapper"]//a[contains(text(), "Подробнее о сервисе")]
+
+4. Заполнить поля и проверить работу кнопки "Продолжить"
+   ("Услуги связи", номер 297777777)
+   4.1 Локаторы полей:
+	- "Номер телефона": //input[@id="connection-phone"]
+	- "Сумма": //input[@id="connection-sum"]
+	- "Email": //input[@id="connection-email"]
+	- Кнопка "Продолжить" //form[@id="pay-connection"]//button[text()="Продолжить"]
+	
+	^ВЫПОЛОНЕНО^
+	
+	Локатор для выбора из списка:
+							//div[@class="pay__form"]//div[@class="select__wrapper"]
+							//span[@class ="select__now"]
+	
+5. Локатор "Услуги связи" 
+	Выбрать из списка: //p[contains(text(), "Услуги связи")]
+	Проверить, открыта ли форма: //form[@id="pay-connection"]
+	
+	Через getAttribute("placeholder"):	
+	5.1 Проверить placeholder = "Номер телефона" //input[@id="connection-phone"]
+	5.2 Проверить placeholder = "Сумма" //input[@id="connection-sum"]
+	5.3 Проверить placeholder = "E-mail для отправки чека" //input[@id="connection-email"]
+
+6. Локатор "Домашний интернет" 
+	Выбрать из списка: //p[contains(text(), "Домашний интернет")]
+	Проверить, открыта ли форма: //form[@id="pay-internet"]
+	
+	Через getAttribute("placeholder"):	
+	6.1 Проверить placeholder = "Номер абонента" //input[@id="internet-phone"]
+	6.2 Проверить placeholder = "Сумма" //input[@id="internet-sum"]
+	6.3 Проверить placeholder = "E-mail для отправки чека" //input[@id="internet-email"]
+	
+7. Локатор "Рассрочка" 
+	Выбрать из списка: //p[contains(text(), "Рассрочка")]
+	Проверить, открыта ли форма: //form[@id="pay-instalment"]
+
+	Через getAttribute("placeholder"):
+	7.1 Проверить placeholder = "Номер счета на 44" //input[@id="score-instalment"]
+	7.2 Проверить placeholder = "Сумма"  //input[@id="instalment-sum"]
+	7.3 Проверить placeholder = "E-mail для отправки чека" //input[@id="instalment-email"]
+	
+8. Локатор "Задолженность"
+	Выбрать из списка: //p[contains(text(), "Задолженность")]
+	Проверить, открыта ли форма: //form[@id="pay-arrears"]
+
+	Через getAttribute("placeholder"):
+	8.1 Проверить placeholder = "Номер счета на 2073" //input[@id="score-arrears"]
+	8.2 Проверить placeholder = "Сумма" //input[@id="arrears-sum"]
+	8.3 Проверить placeholder = "E-mail для отправки чека" //input[@id="arrears-email"]
+	
+	
+	IFrame платежного окна
+1. Проверка суммы на кнопке и вверху
+	1.1 Верхняя сумма = 50. Локатор //div[@class="pay-description__cost"]/span
+	1.2 Сумма на кнопке = 50 Локатор //div[@class="card-page__card"]//button[contains(text(),"Оплатить")]
+
+2. Проверить номер телефона 
+	2.1 Локатор //div[@class="pay-description__text"]//span[contains(text(),"Номер:375297777777")]
+	
+3. Проверка поля "Номер карты"
+	Локатор:  //input[@id="cc-number"]/following-sibling::label
+
+4. Проверка поля "Срок действия"
+	Локатор: //input[@autocomplete="cc-exp"]/following-sibling::label
+	
+5. Проверка поля "CVC"
+	Локатор: //input[@autocomplete="cc-csc"]/following-sibling::label
+
+6. Проверка поля "Имя и фамилия на карте"
+	Локатор: //input[@autocomplete="cc-name"]/following-sibling::label
+
+7. Проверить наличие иконок платежных систем
+	7.1 Visa 
+	//img[@src="assets/images/payment-icons/card-types/visa-system.svg"]
+	//div[contains(@class, "cards-brands")]//img[1]
+	
+	7.2 MasterCard
+	//img[@src="assets/images/payment-icons/card-types/mastercard-system.svg"]
+	//div[contains(@class, "cards-brands")]//img[2]
+	
+	7.3 Белкарт
+	//img[@src="assets/images/payment-icons/card-types/belkart-system.svg"]
+	//div[contains(@class, "cards-brands")]//img[3]
+	
+	7.4 Maestro
+	//img[@src="assets/images/payment-icons/card-types/maestro-system.svg"]
+	//div[contains(@class, "cards-brands_random")]//img[1]
+	
+	
+	7.5 Мир
+	//img[@src="assets/images/payment-icons/card-types/mir-system.svg"]
+	//div[contains(@class, "cards-brands_random")]//img[2]
