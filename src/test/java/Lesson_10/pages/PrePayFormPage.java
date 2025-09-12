@@ -1,11 +1,13 @@
 package Lesson_10.pages;
 
 import Lesson_10.base.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Map;
+
 
 public class PrePayFormPage extends BasePage {
     private final By blockTitleLocator = By.xpath("//h2[normalize-space()=\"Онлайн пополнение без комиссии\"]");
@@ -53,30 +55,37 @@ public class PrePayFormPage extends BasePage {
         super(webDriver,wait);
     }
 
+    @Step("Получаем локатор формы \"Услуги связи\"")
     public By getConnectionServiceFormLocator() {
         return connectionServiceFormLocator;
     }
 
+    @Step("Получаем локатор формы \"Домашний интернет\"")
     public By getInternetServiceFormLocator() {
         return internetServiceFormLocator;
     }
 
+    @Step("Получаем локатор формы \"Рассрочка\"")
     public By getInstalmentServiceFormLocator() {
         return instalmentServiceFormLocator;
     }
 
+    @Step("Получаем локатор формы \"Задолженность\"")
     public By getArrearsServiceFormLocator() {
         return arrearsServiceFormLocator;
     }
 
+    @Step("Получаем локатор iframe формы оплаты")
     public By getPaymentIFrameLocator() {
         return paymentIFrameLocator;
     }
 
+    @Step("Получаем заголовок блока")
     public String getBlockTitle() {
         return webDriver.findElement(blockTitleLocator).getText().replace("\n", " ").trim();
     }
 
+    @Step("Получаем плейсхолдеры формы \"Услуги связи\"")
     public Map<By, String> getConnectionServiceFormPlaceholders() {
         return Map.of(
                 connectionServicePhoneNumberLocator, "Номер телефона",
@@ -85,6 +94,7 @@ public class PrePayFormPage extends BasePage {
         );
     }
 
+    @Step("Получаем плейсхолдеры формы \"Домашний интернет\"")
     public Map<By, String> getInternetServiceFormPlaceholders() {
         return Map.of(
                 internetServiceNumberLocator, "Номер абонента",
@@ -93,6 +103,7 @@ public class PrePayFormPage extends BasePage {
         );
     }
 
+    @Step("Получаем плейсхолдеры формы \"Рассрочка\"")
     public Map<By, String> getInstalmentServiceFormPlaceholders() {
         return Map.of(
                 instalmentServiceNumberLocator, "Номер счета на 44",
@@ -101,6 +112,7 @@ public class PrePayFormPage extends BasePage {
         );
     }
 
+    @Step("Получаем плейсхолдеры формы \"Задолженность\"")
     public Map<By, String> getArrearsServiceFormPlaceholders() {
         return Map.of(
                 arrearsServiceNumberLocator, "Номер счета на 2073",
@@ -109,6 +121,7 @@ public class PrePayFormPage extends BasePage {
         );
     }
 
+    @Step("Выбираем форму: {formLocator}")
     public void selectPrePayFormByLocator(By formLocator) {
         By chosenSelect;
 
@@ -135,6 +148,7 @@ public class PrePayFormPage extends BasePage {
         }
     }
 
+    @Step("Проверяем плейсхолдеры формы {formLocator}")
     public void checkPlaceholders(By formLocator, Map<By, String> expectedPlaceholders) {
         selectPrePayFormByLocator(formLocator);
 
@@ -154,6 +168,7 @@ public class PrePayFormPage extends BasePage {
         });
     }
 
+    @Step("Проверяем отображение логотипа Visa")
     public boolean isVisaLogoDisplayed() {
         try {
             return webDriver.findElement(visaLogoLocator).isDisplayed();
@@ -162,6 +177,7 @@ public class PrePayFormPage extends BasePage {
         }
     }
 
+    @Step("Проверяем отображение логотипа Verified By Visa")
     public boolean isVerifiedByVisaLogoDisplayed() {
         try {
             return webDriver.findElement(verifiedByVisaLogoLocator).isDisplayed();
@@ -170,6 +186,7 @@ public class PrePayFormPage extends BasePage {
         }
     }
 
+    @Step("Проверяем отображение логотипа Master Card")
     public boolean isMasterCardLogoDisplayed() {
         try {
             return webDriver.findElement(masterCardLogoLocator).isDisplayed();
@@ -178,6 +195,7 @@ public class PrePayFormPage extends BasePage {
         }
     }
 
+    @Step("Проверяем отображение логотипа Master Card Secure Code")
     public boolean isMasterCardSecureCodeLogoDisplayed() {
         try {
             return webDriver.findElement(masterCardSecureCodeLogoLocator).isDisplayed();
@@ -186,6 +204,7 @@ public class PrePayFormPage extends BasePage {
         }
     }
 
+    @Step("Проверяем отображение логотипа Белкарт")
     public boolean isBelkartLogoDisplayed() {
         try {
             return webDriver.findElement(belkartLogoLocator).isDisplayed();
@@ -194,14 +213,17 @@ public class PrePayFormPage extends BasePage {
         }
     }
 
+    @Step("Кликаем по ссылке 'Подробнее о сервисе'")
     public void clickAboutServiceLink() {
         wait.until(ExpectedConditions.elementToBeClickable((aboutServiceLinkLocator))).click();
     }
 
+    @Step("Получаем текущий URL страницы")
     public String getCurrentUrl() {
         return webDriver.getCurrentUrl();
     }
 
+    @Step("Заполняем форму услуг связи: номер {number}, сумма {sum}, email {email}")
     public void fillConnectionServicePaymentForm(String number, String sum, String email) {
         actions.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(connectionServicePhoneNumberLocator)))
                 .click()
@@ -217,22 +239,24 @@ public class PrePayFormPage extends BasePage {
                 .perform();
     }
 
-
-    private WebElement getSubmitButtonLocator(By formLocator) {
-        return webDriver.findElement(formLocator).findElement(submitButtonLocator);
-    }
-
+    @Step("Кликаем по кнопке 'Продолжить' для формы {formLocator}")
     public void clickSubmitButton(By formLocator) {
         actions.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(getSubmitButtonLocator(formLocator))))
                 .click()
                 .perform();
     }
 
+    @Step("Проверяем отображение iFrame")
     public boolean isIFrameDisplayed() {
         try {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(paymentIFrameLocator)).isDisplayed();
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    @Step("Получаем локатор кнопки \"Продолжить\"")
+    private WebElement getSubmitButtonLocator(By formLocator) {
+        return webDriver.findElement(formLocator).findElement(submitButtonLocator);
     }
 }

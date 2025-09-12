@@ -2,6 +2,8 @@ package Lesson_10.tests;
 
 import Lesson_10.base.BaseTest;
 import Lesson_10.pages.PrePayFormPage;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Feature("Форма Онлайн пополнения без комиссии")
 public class PrePayFormTest extends BaseTest {
     PrePayFormPage prePayFormPage;
 
@@ -19,12 +22,14 @@ public class PrePayFormTest extends BaseTest {
         prePayFormPage = new PrePayFormPage(webDriver, wait);
     }
 
+    @Story("Проверка названия блока")
     @Test
     @DisplayName("\"Блок называется \"Онлайн пополнение без комиссии\"\"")
     void testBlockTitle() {
         assertEquals("Онлайн пополнение без комиссии", prePayFormPage.getBlockTitle());
     }
 
+    @Story("Проверка отображения логотипов платежных систем")
     @Test
     @DisplayName("На странице отображаются логотипы платежных систем")
     void testPaymentSystemsLogosDisplayed() {
@@ -35,6 +40,7 @@ public class PrePayFormTest extends BaseTest {
         assertTrue(prePayFormPage.isBelkartLogoDisplayed());
     }
 
+    @Story("Проверка ссылки \"Подробнее о сервисе\"")
     @Test
     @DisplayName("Клик по ссылке \"Подробнее о сервисе\" ведёт на страницу \"Порядок оплаты и безопасность интернет платежей\"")
     void testClickAboutServiceLink() {
@@ -42,6 +48,7 @@ public class PrePayFormTest extends BaseTest {
         assertTrue(prePayFormPage.getCurrentUrl().contains("poryadok-oplaty-i-bezopasnost-internet-platezhey"));
     }
 
+    @Story("Проверка кнопки \"Продолжить\"")
     @Test
     @DisplayName("При заполненных полях формы \"Услуги связи\", кнопка \"Продолжить\" открывает модальное окно для ввода реквизитов")
     void testSubmitButtonWhenFormIsFilled() {
@@ -50,6 +57,7 @@ public class PrePayFormTest extends BaseTest {
         assertTrue(prePayFormPage.isIFrameDisplayed());
     }
 
+    @Story("Проверка плейсхолдеров формы \"Услуги связи\"")
     @Test
     @DisplayName("Плейсхолдеры формы \"Услуги связи\" соответстсвуют требуемым")
     void testPlaceholdersInConnectionServiceForm() {
@@ -59,6 +67,7 @@ public class PrePayFormTest extends BaseTest {
         prePayFormPage.checkPlaceholders(form, placeholders);
     }
 
+    @Story("Проверка плейсхолдеров формы \"Домашний нтернет\"")
     @Test
     @DisplayName("Плейсхолдеры формы \"Домашний нтернет\" соответстсвуют требуемым")
     void testPlaceholdersInInternetServiceForm() {
@@ -68,8 +77,9 @@ public class PrePayFormTest extends BaseTest {
         prePayFormPage.checkPlaceholders(form, placeholders);
     }
 
+    @Story("Проверка плейсхолдеров формы \"Рассрочка\"")
     @Test
-    @DisplayName("Плейсхолдеры формы \"Рассрочка\" соответстсвуют требуемым")
+    @DisplayName("Плейсхолдеры формы \"\" соответстсвуют требуемым")
     void testPlaceholdersInInstalmentServiceForm() {
         By form = prePayFormPage.getInstalmentServiceFormLocator();
         Map<By, String> placeholders = prePayFormPage.getInstalmentServiceFormPlaceholders();
@@ -77,8 +87,9 @@ public class PrePayFormTest extends BaseTest {
         prePayFormPage.checkPlaceholders(form, placeholders);
     }
 
+    @Story("Проверка плейсхолдеров формы \"Задолженность\"")
     @Test
-    @DisplayName("Плейсхолдеры формы \"Задолженность\" соответстсвуют требуемым")
+    @DisplayName("Плейсхолдеры формы \"\" соответстсвуют требуемым")
     void testPlaceholdersInArrearsServiceForm() {
         By form = prePayFormPage.getArrearsServiceFormLocator();
         Map<By, String> placeholders = prePayFormPage.getArrearsServiceFormPlaceholders();
