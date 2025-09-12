@@ -2,37 +2,12 @@ package Lesson_9;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MtsTests {
-    private WebDriver webDriver;
-    private WebDriverWait wait;
-
-    @BeforeEach
-    void setUp() {
-        webDriver = new ChromeDriver();
-        webDriver.get("http://mts.by/");
-        wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
-
-        WebElement agreeCookie = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id=\"cookie-agree\"]")));
-        if (agreeCookie.isDisplayed()) {
-            agreeCookie.click();
-        }
-    }
-
-    @AfterEach
-    void closeWindow() {
-        webDriver.quit();
-    }
-
+public class MtsTests extends Lesson_9.BaseTest {
     @Test
     @DisplayName("Блок называется \"Онлайн пополнение без комиссии\"")
     void testBlockTitle() {
@@ -77,7 +52,7 @@ public class MtsTests {
         phoneNumber.sendKeys("297777777");
 
         sum.click();
-        sum.sendKeys("50");
+        sum.sendKeys("50.00");
 
         email.click();
         email.sendKeys("guvpeo@tempinbox.xyz");
