@@ -24,7 +24,7 @@ public class PrePayFormTest extends BaseTest {
 
     @Story("Проверка названия блока")
     @Test
-    @DisplayName("\"Блок называется \"Онлайн пополнение без комиссии\"\"")
+    @DisplayName("Блок называется \"Онлайн пополнение без комиссии\"")
     void testBlockTitle() {
         assertEquals("Онлайн пополнение без комиссии", prePayFormPage.getBlockTitle());
     }
@@ -79,7 +79,7 @@ public class PrePayFormTest extends BaseTest {
 
     @Story("Проверка плейсхолдеров формы \"Рассрочка\"")
     @Test
-    @DisplayName("Плейсхолдеры формы \"\" соответстсвуют требуемым")
+    @DisplayName("Плейсхолдеры формы \"Рассрочка\" соответстсвуют требуемым")
     void testPlaceholdersInInstalmentServiceForm() {
         By form = prePayFormPage.getInstalmentServiceFormLocator();
         Map<By, String> placeholders = prePayFormPage.getInstalmentServiceFormPlaceholders();
@@ -89,7 +89,7 @@ public class PrePayFormTest extends BaseTest {
 
     @Story("Проверка плейсхолдеров формы \"Задолженность\"")
     @Test
-    @DisplayName("Плейсхолдеры формы \"\" соответстсвуют требуемым")
+    @DisplayName("Плейсхолдеры формы \"Задолженность\" соответстсвуют требуемым")
     void testPlaceholdersInArrearsServiceForm() {
         By form = prePayFormPage.getArrearsServiceFormLocator();
         Map<By, String> placeholders = prePayFormPage.getArrearsServiceFormPlaceholders();

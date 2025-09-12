@@ -1,6 +1,7 @@
 package Lesson_10.base;
 
 import io.qameta.allure.Epic;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+@Owner("Роман Слабукаров")
 @Epic("Тесты платежных форм")
 public abstract class BaseTest {
     protected WebDriver webDriver = new ChromeDriver();
