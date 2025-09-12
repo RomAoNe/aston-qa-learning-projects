@@ -16,7 +16,16 @@ public abstract class BaseTest {
     void setUp() {
         wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
         webDriver.get("http://mts.by/");
+        acceptCookies();
+        hideHelpWidget();
+    }
 
+    @AfterEach
+    void closeWindow() {
+        webDriver.quit();
+    }
+
+    private void acceptCookies(){
         try {
             WebElement agreeCookie = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@id=\"cookie-agree\"]")));
             if (agreeCookie.isDisplayed()) {
@@ -25,7 +34,9 @@ public abstract class BaseTest {
         } catch (TimeoutException ignored) {
             // Игнорирруем, если "Принять куки" не появилось
         }
+    }
 
+    private void hideHelpWidget() {
         try {
             WebElement helpWidget = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(@class, \"webim-button-corner\")]")));
             if (helpWidget.isDisplayed()) {
@@ -34,10 +45,5 @@ public abstract class BaseTest {
         } catch (TimeoutException ignored) {
             // Игнорировать, если "Помощь" не появилась
         }
-    }
-
-    @AfterEach
-    void closeWindow() {
-        webDriver.quit();
     }
 }
